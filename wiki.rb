@@ -16,6 +16,10 @@ def save_content(title, content)
     end
 end
 
+def delete_content(title)
+    File.delete("pages/#{title}.txt")
+end
+
 get("/") do
     erb :welcome
 end
@@ -29,6 +33,12 @@ get("/new") do
     erb :new
 end
 
+get "/edit/:title" do
+    @title = params[:title]
+    @content = page_content(@title)
+    erb :edit
+end
+
 get "/pages/:title" do
     @title = params[:title]
     @content = page_content(@title)
@@ -38,4 +48,17 @@ end
 post("/create") do
     save_content(params[:title], params[:content])
     redirect URI.escape("/pages/#{params[:title]}")
+end
+
+put("/update_page/:title") do
+    @title = params[:title]
+    @content = params[:content]
+    save_content(@title, @content)
+    redirect URI.escape("/pages/#{@title}")
+end
+
+delete("/delete/:title") do
+    @title = params[:title]
+    delete_content(@title)
+    redirect("/")
 end
