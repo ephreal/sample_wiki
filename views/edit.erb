@@ -1,16 +1,22 @@
-<h1>
-Edit page: <%=@title%>
-</h1>
+<!DOCTYPE html>
 
-<div>
-    <form method="post" action="/update_page/<%=@title%>">
-        <input type="hidden" name="_method" value="put" />
-        <fieldset>
-            <label for="content">Content:</label>
-            <textarea rows="10" columns="50" name="content" id=content><%=@content%></textarea>
-        </fieldset>
-        <input type="submit"></input>
-    </form>
-</div>
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Edit page: <%=@title%></h1>
 
-<a href="/">Back to index</a>
+        <div>
+            <form method="post" action="/update_page/<%=@title%>">
+                <input type="hidden" name="_method" value="put" />
+                <fieldset>
+                    <label for="content">Content:</label>
+                    <textarea rows="10" columns="50" name="content" id=content><%=@content%></textarea>
+                </fieldset>
+                <input type="submit"></input>
+            </form>
+        </div>
+        <a href="/">Back to index</a>
+    </body>
+</html>

@@ -1,9 +1,18 @@
-<h1><%=@title%></h1>
-<p><%= @content %></p>
-<div>
-    <a href="/edit/<%=@title%>">Edit this page</a>
-    <form method="post" action="/delete/<%=@title%>">
-    <input name="_method" type="hidden" value="delete">
-    <input type="submit" value="Delet this page" />
-    </form>
-</div>
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1><%=@title%></h1>
+        <p><%= @content %></p>
+        <div>
+            <a href="/edit/<%=@title%>">Edit this page</a>
+            <form method="post" action="/delete/<%=@title%>">
+                <input name="_method" type="hidden" value="delete" />
+                <input type="submit" value="Delete this page" />
+            </form>
+        </div>
+    </body>
+</html>
