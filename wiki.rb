@@ -10,6 +10,10 @@ def page_content(title)
         return nil
 end
 
+def escape_content(content)
+    Rack::Utils.escape_html(content)
+end
+
 def save_content(title, content)
     File.open("pages/#{title}.txt", "w") do |file|
         file.print(content)
@@ -22,11 +26,6 @@ end
 
 get("/") do
     erb :welcome
-end
-
-get "/test" do
-    # Used to show some examples of how erb is used
-    erb :test
 end
 
 get("/new") do
